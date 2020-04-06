@@ -5,3 +5,7 @@
 ## Comandos utilizados:
 
 > yarn init -y
+
+> yarn add express mysql2 sequelize
+
+> yarn add sequilize-cli
