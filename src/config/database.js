@@ -1,8 +1,8 @@
 module.exports = {
     dialect: 'mysql',
-    host: 'db4free.net',
-    username: 'kairos_consult',
-    password: 'sounousounou',
+    host: 'localhost',
+    username: 'root',
+    password: 'root',
     database: 'db_fly_van',
     define: {
         timestamps: true,
