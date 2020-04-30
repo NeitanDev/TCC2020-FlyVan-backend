@@ -33,6 +33,13 @@ Esse projeto foi desenvolvido utilizando:
 
 Um app pra fretamento de van, e tbm rastreamento das vans
 
+## 📧 Contato
+
+- Email: natan.miranda02@gmail.com
+- [Linkdin](https://www.linkedin.com/in/natan-bezerra-de-miranda-0b4b93180/)
+- [Instagram](https://www.instagram.com/neitan_miranda02/)
+- [WebSite da Consultoria](http://aluno.etecarmine.com.br/3Etim/PedroG/TCC2020/SiteTCC/)
+
 ---
 
 Feito com ♥ by Natan Bezerra de Miranda, Matheus Penchiari, Pedro Gambirazi e Abner Almeida :wave:
