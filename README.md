@@ -16,7 +16,7 @@
 <br>
 
 <p align="center">
-  <img alt="Fly Van" src="./images/Fly-vanbannerdoGithub.jpg" width="100%">
+  <img alt="Fly Van" src="./images/Fly-vanbannerdoGithub.png" width="100%">
 </p>
 
 ## :rocket: Tecnologias
