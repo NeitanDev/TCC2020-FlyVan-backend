@@ -18,6 +18,10 @@ module.exports = {
           type: Sequelize.STRING,
           allowNull: false,
         },
+        cod: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
         email: {
           type: Sequelize.STRING,
           allowNull: false,
@@ -40,6 +44,14 @@ module.exports = {
         },
         whatsapp: {
           type: Sequelize.STRING,
+          allowNull: false,
+        },
+        created_at: {
+          type: Sequelize.DATE,
+          allowNull: false,
+        },
+        updated_at: {
+          type: Sequelize.DATE,
           allowNull: false,
         },
       });
