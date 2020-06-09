@@ -1,14 +1,13 @@
 const { Model, DataTypes } = require('sequelize');
 
-class Passageiros extends Model {
+class Empresas extends Model {
     static init(connection) {
         super.init({
-            // id: DataTypes.INTEGER,
             nome: DataTypes.STRING,
-            sobrenome: DataTypes.STRING,
-            cod: DataTypes.STRING,
+            regiao: DataTypes.STRING,
             email: DataTypes.STRING,
             senha: DataTypes.STRING,
+            cnpj: DataTypes.STRING,
             whatsapp: DataTypes.STRING,
         }, {
             sequelize: connection,
@@ -16,4 +15,4 @@ class Passageiros extends Model {
     }
 };
 
-module.exports = Passageiros;
+module.exports = Empresas;

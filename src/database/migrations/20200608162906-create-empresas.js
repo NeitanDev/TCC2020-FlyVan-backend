@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      região: {
+      regiao: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -25,11 +25,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      CNPJ: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      telefone: {
+      cnpj: {
         type: Sequelize.STRING,
         allowNull: false,
       },

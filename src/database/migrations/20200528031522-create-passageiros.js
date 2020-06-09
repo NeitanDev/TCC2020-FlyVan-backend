@@ -19,7 +19,7 @@ module.exports = {
           allowNull: false,
         },
         cod: {
-          type: Sequelize.STRING,
+          type: Sequelize.String,
           allowNull: false,
         },
         email: {
