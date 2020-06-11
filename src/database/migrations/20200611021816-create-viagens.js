@@ -2,35 +2,27 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('vans', {
+    return queryInterface.createTable('viagens', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
       },
-      placa: {
+      cidade: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      modelo: {
+      partida: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      marca: {
+      destino: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      ano: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      proprietario: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      id_proprietario: {
-        type: Sequelize.INTEGER,
+      horario: {
+        type: Sequelize.TIME,
         allowNull: false,
       },
       created_at: {
@@ -45,6 +37,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('vans');
+    return queryInterface.dropTable('viagens');
   }
 };
