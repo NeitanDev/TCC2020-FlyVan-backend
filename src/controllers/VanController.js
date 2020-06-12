@@ -17,12 +17,8 @@ module.exports = {
     },
 
     async list(req, res) {
-        const vans = Vans.findAll();
+        const vans = await Vans.findAll();
 
-        const passageiros = await connection.query("SELECT * FROM vans",
-            { type: connection.QueryTypes.SELECT });
-
-
-        return res.json(passageiros);
+        return res.json(vans);
     }
 };
