@@ -22,9 +22,9 @@ module.exports = {
         if (!motorista && !passageiro) {
             return res.status(400).json({ error: "Usuario não encontrado na base de dados" });
         } else if (motorista) {
-            return res.json({ user: "motorista", id: motorista.id, nome: motorista.nome });
+            return res.json({ id: motorista.id, user: "motorista", nome: motorista.nome });
         } else if (passageiro) {
-            return res.json({ user: "passageiro", id: passageiro.id, nome: passageiro.nome });
+            return res.json({ id: passageiro.id, user: "passageiro", nome: passageiro.nome });
         }
     }
 }

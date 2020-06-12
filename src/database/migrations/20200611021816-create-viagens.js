@@ -9,6 +9,13 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
+      motorista_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: 'motoristas', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      },
       cidade: {
         type: Sequelize.STRING,
         allowNull: false,
