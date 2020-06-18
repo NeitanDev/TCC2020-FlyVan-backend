@@ -22,10 +22,10 @@
 
 | Foto |    Name    |    Linkdin    | Email  | Instagram |
 |:----:|:----------:|:-------------:|:------:|:---------:|
-|<img alt="Fly Van" src="http://aluno.etecarmine.com.br/3Etim/PedroG/TCC2020/SiteTCC/images/Abner.jpeg" width="60px">| Abner Almeida | [Linkdin]() | [abneralmeida@gmail.com](abneralmeida@gmail.com) | [Instagram]() |
-|<img alt="Fly Van" src="http://aluno.etecarmine.com.br/3Etim/PedroG/TCC2020/SiteTCC/images/Pench.jpeg" width="60px">| Matheus Penchiari | [Linkdin]() | [matheuspenchiari@gmail.com](matheuspenchiari@gmail.com) | [Instagram](https://www.instagram.com/_mpenzin/)
-|<img alt="Fly Van" src="http://aluno.etecarmine.com.br/3Etim/PedroG/TCC2020/SiteTCC/images/Natan.jpeg" width="60px">| Natan Bezerra | [Linkdin](https://www.linkedin.com/in/natan-bezerra-de-miranda-0b4b93180/) | [natan.miranda02@gmail.com](natan.miranda02@gmail.com) | [Instagram](https://www.instagram.com/neitan_miranda02/)
-|<img alt="Fly Van" src="http://aluno.etecarmine.com.br/3Etim/PedroG/TCC2020/SiteTCC/images/Gambirazi.jpeg" width="60px">| Pedro Gambirazi | [Linkdin]() | [pedrogambirazi@gmail.com](pedrogambirazi@gmail.com) | [Instagram]()
+|<img alt="Fly Van" src="https://aluno.etecarmine.com.br/3Etim/MatheusP/TCCVan/SiteKairos/images/Abner.jpeg" width="60px">| Abner Almeida | [Linkdin]() | [abneralmeida@gmail.com](abneralmeida@gmail.com) | [Instagram]() |
+|<img alt="Fly Van" src="https://aluno.etecarmine.com.br/3Etim/MatheusP/TCCVan/SiteKairos/images/Pench.jpeg" width="60px">| Matheus Penchiari | [Linkdin]() | [matheuspenchiari@gmail.com](matheuspenchiari@gmail.com) | [Instagram](https://www.instagram.com/_mpenzin/)
+|<img alt="Fly Van" src="https://aluno.etecarmine.com.br/3Etim/MatheusP/TCCVan/SiteKairos/images/Natan.jpeg" width="60px">| Natan Bezerra | [Linkdin](https://www.linkedin.com/in/natan-bezerra-de-miranda-0b4b93180/) | [natan.miranda02@gmail.com](natan.miranda02@gmail.com) | [Instagram](https://www.instagram.com/neitan_miranda02/)
+|<img alt="Fly Van" src="https://aluno.etecarmine.com.br/3Etim/MatheusP/TCCVan/SiteKairos/images/Gambirazi.jpeg" width="60px">| Pedro Gambirazi | [Linkdin]() | [pedrogambirazi@gmail.com](pedrogambirazi@gmail.com) | [Instagram]()
 
 ## :rocket: Tecnologias
 
