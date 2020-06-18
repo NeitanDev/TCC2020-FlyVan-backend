@@ -35,6 +35,7 @@ Esse projeto foi desenvolvido utilizando:
 - [Express](https://expressjs.com/pt-br/)
 - [Sequelize](https://sequelize.org/v5/)
 - [MySQL](https://www.mysql.com/)
+- [Multer](#)
 - [Socket.io](https://socket.io/docs)
 
 ## 💻 Projeto
