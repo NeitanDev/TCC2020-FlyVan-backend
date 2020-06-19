@@ -3,6 +3,7 @@ const multer = require('multer');
 
 const uploadConfigMotorista = require('./config/upload_motorista');
 const uploadConfigVans = require('./config/upload_vans');
+const uploadConfigPassageiro = require('./config/upload_passageiro');
 
 const PassageiroController = require('./controllers/PassageiroController');
 const EmpresaController = require('./controllers/EmpresaController');
@@ -15,7 +16,7 @@ const TesteController = require('./controllers/TesteController');
 const routes = express.Router();
 // const upload = multer(uploadConfig);
 
-routes.post('/passageiro', PassageiroController.create);
+routes.post('/passageiro',multer(uploadConfigPassageiro).single('image'), PassageiroController.create);
 routes.get('/passageiro', PassageiroController.list);
 
 routes.post('/empresa', EmpresaController.create);
@@ -26,7 +27,7 @@ routes.get('/vans', VanController.list);
 routes.post('/viagens', ViagemController.create);
 routes.get('/viagens', ViagemController.list);
 
-routes.post('/motoristas/:empresa_id', MotoristaController.create);
+routes.post('/motoristas/:empresa_id', multer(uploadConfigMotorista).single('image'), MotoristaController.create);
 routes.get('/motoristas', MotoristaController.list);
 
 routes.post('/login', LoginController.login);

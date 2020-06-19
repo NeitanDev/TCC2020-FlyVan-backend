@@ -7,7 +7,7 @@ var localdate = data.getFullYear() + (data.getMonth() + 1) + data.getDate() + '_
 
 module.exports = {
     storage: new multer.diskStorage({
-        destination: path.resolve(__dirname, '..', '..', 'uploads', 'motoristas'),
+        destination: path.resolve(__dirname, '..', '..', 'uploads', 'passageiros'),
         filename: function (req, file, callback) {
             callback(null, localdate + '.jpg');
         }

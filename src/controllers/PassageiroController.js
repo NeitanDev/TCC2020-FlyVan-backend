@@ -20,6 +20,7 @@ module.exports = {
             Passageiro.create({
                 nome,
                 sobrenome,
+                image: `uploads/passageiros/${req.file.filename}`,
                 cod,
                 email,
                 senha,
