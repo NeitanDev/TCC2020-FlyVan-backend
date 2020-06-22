@@ -10,6 +10,13 @@ class Motoristas extends Model {
             senha: DataTypes.STRING,
             cnh: DataTypes.BIGINT,
             whatsapp: DataTypes.STRING,
+            image: DataTypes.STRING,
+            cep: DataTypes.INTEGER,
+            lougradouro: DataTypes.STRING,
+            bairro: DataTypes.STRING,
+            cidade: DataTypes.STRING,
+            uf: DataTypes.STRING,
+            numero: DataTypes.INTEGER,
         }, {
             sequelize: connection,
         })

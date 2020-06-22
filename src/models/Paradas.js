@@ -10,6 +10,7 @@ class Paradas extends Model {
             bairro: DataTypes.STRING,
             cidade: DataTypes.STRING,
             uf: DataTypes.CHAR,
+            numero: DataTypes.INTEGER,
         }, {
             sequelize: connection,
         })

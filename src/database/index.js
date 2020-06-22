@@ -6,7 +6,6 @@ const Empresas = require('../models/Empresas');
 const Vans = require('../models/Vans');
 const Viagens = require('../models/Viagens');
 const Motoristas = require('../models/Motoristas');
-const Motorista_descricaos = require('../models/Motorista_descricaos');
 
 
 const connection = new Sequelize(dbConfig);
@@ -17,7 +16,6 @@ Vans.init(connection);
 Viagens.init(connection);
 Motoristas.init(connection);
 Motoristas.associate(connection.models);
-Motorista_descricaos.init(connection);
-Motorista_descricaos.associate(connection.models);
+
 
 module.exports = connection;

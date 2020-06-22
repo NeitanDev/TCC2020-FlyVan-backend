@@ -1,41 +1,37 @@
 const Motoristas = require('../models/Motoristas');
 const Empresas = require('../models/Empresas');
-const Motorista_descricaos = require('../models/Motorista_descricaos');
 const createId = require('../utils/createId');
 const connection = require('../database/index');
 
 module.exports = {
     async create(req, res) {
         const { empresa_id } = req.params;
-        const { nome, sobrenome, email, senha, cnh, whatsapp } = req.body;
+        const { nome, sobrenome, email, senha, cnh, whatsapp, cep, lougradouro, bairro, cidade, uf, numero } = req.body;
         const cod = createId();
 
         const empresa = await Empresas.findByPk(empresa_id);
 
         if (empresa) {
             const motorista = await Motoristas.create({
+                empresa_id,
                 nome,
                 sobrenome,
+                cod,
                 email,
                 senha,
                 cnh,
                 whatsapp,
-                cod,
-                empresa_id,
-            });
-
-            const { id } = motorista;
-            const description = await Motorista_descricaos.create({
-                motorista_id: id,
                 image: `uploads/motoristas/${req.file.filename}`,
-                avaliacao: '5',
+                cep,
+                lougradouro,
+                bairro,
+                cidade,
+                uf,
+                numero
             });
 
-            const { image, avaliação } = description;
 
-            const result = { id, nome, sobrenome, email, senha, cnh, whatsapp, cod, empresa_id, image, avaliação };
-
-            return res.json(result);
+            return res.json(motorista);
         } else if (!empresa) {
             return res.status(400).json({ Mensage: "Erro!, empresa não existente" })
         }
