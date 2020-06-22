@@ -1,4 +1,5 @@
 const Passageiro = require('../models/Passageiros');
+const Paradas = require('../models/Paradas');
 const createId = require('../utils/createId');
 // const connection = require('../database/index');
 
@@ -13,7 +14,7 @@ module.exports = {
     },
 
     async create(req, res) {
-        const { nome, sobrenome, email, senha, whatsapp } = req.body;
+        const { nome, sobrenome, email, senha, whatsapp, cep, lougradouro, bairro, cidade, uf, numero, latitude, longitude } = req.body;
         const cod = createId();
 
         const passageiro = await
@@ -24,9 +25,24 @@ module.exports = {
                 cod,
                 email,
                 senha,
-                whatsapp
+                whatsapp,
             });
 
-        return res.json(passageiro);
+        const { id } = passageiro;
+
+        const parada = await
+            Paradas.create({
+                latitude,
+                longitude,
+                cep,
+                lougradouro,
+                bairro,
+                cidade,
+                uf,
+                numero,
+                passageiro_id: id,
+            });
+
+        return res.json({ passageiro, parada });
     }
 }
