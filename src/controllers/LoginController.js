@@ -14,8 +14,8 @@ module.exports = {
         const passageiro = await Passageiros.findOne({
             attributes: ['id', 'nome'],
             where: {
-                email: 'abnerpedroso@gmail.com',
-                senha: 'bnão_arrasa_quarteirão'
+                email,
+                senha
             },
         });
 
