@@ -4,6 +4,9 @@ const Passageiros = require('../models/Passageiros');
 module.exports = {
     async login(req, res) {
         const { email, senha } = req.body;
+        console.log(email);
+        console.log(senha);
+
         const motorista = await Motoristas.findOne({
             attributes: ['id', 'nome'],
             where: {
