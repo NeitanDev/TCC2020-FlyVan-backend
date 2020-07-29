@@ -1,5 +1,6 @@
 const Viagens = require('../models/Viagens');
 
+
 module.exports = {
     async create(req, res) {
         const { cidade, partida, destino, horario } = req.body;

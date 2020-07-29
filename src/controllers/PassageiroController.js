@@ -1,7 +1,7 @@
 const Passageiro = require('../models/Passageiros');
 const Paradas = require('../models/Paradas');
 const createId = require('../utils/createId');
-// const connection = require('../database/index');
+const connection = require('../database/index');
 
 module.exports = {
 
@@ -44,5 +44,14 @@ module.exports = {
             });
 
         return res.json({ passageiro, parada });
-    }
+    }, 
+
+    async perfil(req,res){
+        const { id } = req.params;
+        
+        const response = await connection.query(`SELECT * FROM passageiros, paradas WHERE paradas.passageiro_id = passageiros.id AND passageiros.id = `+id,
+        { type: connection.QueryTypes.SELECT });
+
+        return res.json(response[0]);
+    }   
 }
