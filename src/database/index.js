@@ -7,6 +7,7 @@ const Vans = require('../models/Vans');
 const Viagens = require('../models/Viagens');
 const Motoristas = require('../models/Motoristas');
 const Paradas = require('../models/Paradas');
+const Van_descricao = require('../models/Van_descricao');
 
 
 const connection = new Sequelize(dbConfig);
@@ -19,6 +20,8 @@ Motoristas.init(connection);
 Motoristas.associate(connection.models);
 Paradas.init(connection);
 Paradas.associate(connection.models);
+Van_descricao.init(connection);
+Van_descricao.associate(connection.models);
 
 
 module.exports = connection;
