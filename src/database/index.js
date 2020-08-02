@@ -7,7 +7,7 @@ const Vans = require('../models/Vans');
 const Viagens = require('../models/Viagens');
 const Motoristas = require('../models/Motoristas');
 const Paradas = require('../models/Paradas');
-const Van_descricao = require('../models/Van_descricao');
+const Van_descricao = require('../models/Van_descricaos');
 
 
 const connection = new Sequelize(dbConfig);

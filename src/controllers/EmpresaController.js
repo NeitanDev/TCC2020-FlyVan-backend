@@ -1,3 +1,4 @@
+const connection = require('../database/index');
 const Empresa = require('../models/Empresas');
 
 module.exports = {
@@ -13,6 +14,16 @@ module.exports = {
                 cnpj,
                 whatsapp,
             });
+
+        return res.json(empresa);
+    },
+
+    async searchCnpj(req, res) {
+        const { cnpj } = req.body;
+
+        const empresa = await connection.query(`SELECT * FROM empresas ` +
+            `WHERE cnpj LIKE '${cnpj}%';`,
+            { type: connection.QueryTypes.SELECT });
 
         return res.json(empresa);
     }

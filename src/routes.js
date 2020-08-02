@@ -14,24 +14,57 @@ const LoginController = require('./controllers/LoginController');
 const TesteController = require('./controllers/TesteController');
 
 const routes = express.Router();
-// const upload = multer(uploadConfig);
 
-routes.post('/passageiro',multer(uploadConfigPassageiro).single('image'), PassageiroController.create);
+/**
+ * Passageiros Routes:
+ */
+
+routes.post('/passageiro', multer(uploadConfigPassageiro).single('image'), PassageiroController.create);
 routes.get('/passageiro', PassageiroController.list);
 routes.get('/passageiro/perfil/:id', PassageiroController.perfil);
 
+
+/**
+ * Empresas Routes:
+ */
+
 routes.post('/empresa', EmpresaController.create);
 
-routes.post('/vans', VanController.create);
+
+/**
+ * Vans Routes:
+ */
+
+routes.post('/vans',multer(uploadConfigVans).single('image'), VanController.create);
 routes.get('/vans', VanController.list);
+
+
+/**
+ * Viangesn Routes:
+ */
 
 routes.post('/viagens', ViagemController.create);
 routes.get('/viagens', ViagemController.list);
 
+
+/**
+ * Motorista Routes:
+ */
+
 routes.post('/motoristas/:empresa_id', multer(uploadConfigMotorista).single('image'), MotoristaController.create);
 routes.get('/motoristas', MotoristaController.list);
 
+
+/**
+ * Login Route:
+ */
+
 routes.post('/login', LoginController.login);
+
+
+/**
+ * Testes:
+ */
 
 routes.post('/teste', multer(uploadConfigMotorista).single('image'), TesteController.sounou);
 routes.post('/teste2', multer(uploadConfigVans).single('image'), TesteController.sounou);

@@ -11,7 +11,7 @@ module.exports = {
 
         const empresa = await Empresas.findByPk(empresa_id);
 
-        if (empresa) {
+        if (empresa != null) {
             const motorista = await Motoristas.create({
                 empresa_id,
                 nome,
@@ -32,7 +32,7 @@ module.exports = {
 
 
             return res.json(motorista);
-        } else if (!empresa) {
+        } else if (empresa == null) {
             return res.status(400).json({ Mensage: "Erro!, empresa não existente" })
         }
     },
