@@ -26,5 +26,15 @@ module.exports = {
             { type: connection.QueryTypes.SELECT });
 
         return res.json(empresa);
-    }
+    },
+
+    async searchName(req, res) {
+        const { name } = req.body;
+
+        const empresa = await connection.query(`SELECT * FROM empresas ` +
+            `WHERE nome LIKE '%${name}%';`,
+            { type: connection.QueryTypes.SELECT });
+
+        return res.json(empresa);
+    },
 }

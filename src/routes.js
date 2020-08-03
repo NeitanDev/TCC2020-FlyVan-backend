@@ -29,13 +29,15 @@ routes.get('/passageiro/perfil/:id', PassageiroController.perfil);
  */
 
 routes.post('/empresa', EmpresaController.create);
+routes.get('/empresas/pesquisar/cnpj', EmpresaController.searchCnpj);
+routes.get('/empresas/pesquisar/name', EmpresaController.searchName);
 
 
 /**
  * Vans Routes:
  */
 
-routes.post('/vans',multer(uploadConfigVans).single('image'), VanController.create);
+routes.post('/vans', multer(uploadConfigVans).single('image'), VanController.create);
 routes.get('/vans', VanController.list);
 
 
