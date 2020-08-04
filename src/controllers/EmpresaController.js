@@ -26,7 +26,7 @@ module.exports = {
             cnpj = 'nnjnjdnks';
         }
         const empresa = await connection.query(`SELECT * FROM empresas ` +
-            `WHERE cnpj LIKE '${cnpj}%';`,
+            `WHERE cnpj LIKE '${cnpj}%' LIMIT 1;`,
             { type: connection.QueryTypes.SELECT });
         return res.json(empresa);
     },

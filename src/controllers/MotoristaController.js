@@ -6,7 +6,8 @@ const connection = require('../database/index');
 module.exports = {
     async create(req, res) {
         const { empresa_id } = req.params;
-        const { nome, sobrenome, email, senha, cnh, whatsapp, cep, lougradouro, bairro, cidade, uf, numero } = req.body;
+        const { nome, sobrenome, email, senha, cnh, whatsapp, cep,
+            lougradouro, bairro, cidade, uf, numero, pertence } = req.body;
         const cod = createId();
 
         const empresa = await Empresas.findByPk(empresa_id);
@@ -21,13 +22,14 @@ module.exports = {
                 senha,
                 cnh,
                 whatsapp,
-                image: `uploads/motoristas/${req.file.filename}`,
+                // image: `uploads/motoristas/${req.file.filename}`,
                 cep,
                 lougradouro,
                 bairro,
                 cidade,
                 uf,
-                numero
+                numero,
+                pertence
             });
 
 

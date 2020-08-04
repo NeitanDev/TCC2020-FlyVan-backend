@@ -8,7 +8,7 @@ module.exports = {
         console.log(senha);
 
         const motorista = await Motoristas.findOne({
-            attributes: ['id', 'nome'],
+            attributes: ['id', 'nome', 'empresa_id', 'pertence'],
             where: {
                 email,
                 senha
@@ -25,7 +25,13 @@ module.exports = {
         if (!motorista && !passageiro) {
             return res.status(400).json({ error: "Usuario não encontrado na base de dados" });
         } else if (motorista) {
-            return res.json({ id: motorista.id, user: "motorista", nome: motorista.nome });
+            return res.json({
+                id: motorista.id,
+                user: "motorista",
+                nome: motorista.nome,
+                empresa_id: motorista.empresa_id,
+                pertence: motorista.pertence,
+            });
         } else if (passageiro) {
             return res.json({ id: passageiro.id, user: "passageiro", nome: passageiro.nome });
         }

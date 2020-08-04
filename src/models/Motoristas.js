@@ -17,6 +17,7 @@ class Motoristas extends Model {
             cidade: DataTypes.STRING,
             uf: DataTypes.STRING,
             numero: DataTypes.INTEGER,
+            pertence: DataTypes.STRING
         }, {
             sequelize: connection,
         })
