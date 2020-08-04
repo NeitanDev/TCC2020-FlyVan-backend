@@ -29,7 +29,7 @@ routes.get('/passageiro/perfil/:id', PassageiroController.perfil);
  */
 
 routes.post('/empresa', EmpresaController.create);
-routes.get('/empresas/pesquisar/cnpj', EmpresaController.searchCnpj);
+routes.post('/empresa/pesquisar', EmpresaController.searchCnpj);
 routes.get('/empresas/pesquisar/name', EmpresaController.searchName);
 
 
@@ -70,5 +70,6 @@ routes.post('/login', LoginController.login);
 
 routes.post('/teste', multer(uploadConfigMotorista).single('image'), TesteController.sounou);
 routes.post('/teste2', multer(uploadConfigVans).single('image'), TesteController.sounou);
+routes.post('/desespero', TesteController.desespero);
 
 module.exports = routes;

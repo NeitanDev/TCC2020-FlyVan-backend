@@ -19,12 +19,15 @@ module.exports = {
     },
 
     async searchCnpj(req, res) {
-        const { cnpj } = req.body;
+        let { cnpj } = req.body;
 
+        console.log(req.body);
+        if (cnpj == '') {
+            cnpj = 'nnjnjdnks';
+        }
         const empresa = await connection.query(`SELECT * FROM empresas ` +
             `WHERE cnpj LIKE '${cnpj}%';`,
             { type: connection.QueryTypes.SELECT });
-
         return res.json(empresa);
     },
 
@@ -37,4 +40,14 @@ module.exports = {
 
         return res.json(empresa);
     },
+
+    async addFuncionario(req, res) {
+        const { id_empresa } = req.body;
+
+        const empresa = await connection.query(`SELECT * FROM empresas ` +
+            `WHERE nome LIKE '%${name}%';`,
+            { type: connection.QueryTypes.SELECT });
+
+        return res.json(empresa);
+    }
 }
