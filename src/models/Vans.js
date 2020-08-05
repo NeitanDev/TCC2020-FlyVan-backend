@@ -4,6 +4,7 @@ class Vans extends Model {
     static init(connection) {
         super.init({
             placa: DataTypes.STRING,
+            renavam: DataTypes.INTEGER,
             modelo: DataTypes.STRING,
             marca: DataTypes.STRING,
             ano: DataTypes.INTEGER,
