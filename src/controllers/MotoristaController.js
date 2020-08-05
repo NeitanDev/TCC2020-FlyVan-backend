@@ -2,6 +2,7 @@ const Motoristas = require('../models/Motoristas');
 const Empresas = require('../models/Empresas');
 const createId = require('../utils/createId');
 const connection = require('../database/index');
+// const { perfil } = require('./PassageiroController');
 
 module.exports = {
     async create(req, res) {
@@ -48,5 +49,11 @@ module.exports = {
             { type: connection.QueryTypes.SELECT });
 
         return res.json(motorista);
+    },
+
+    async perfil(req, res) {
+        const { id } = req.params;
+        const motorista = await Motoristas.findByPk(id);
+        res.json(motorista);
     }
 };

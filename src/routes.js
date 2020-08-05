@@ -55,6 +55,7 @@ routes.get('/viagens', ViagemController.list);
 
 routes.post('/motoristas/:empresa_id', multer(uploadConfigMotorista).single('image'), MotoristaController.create);
 routes.get('/motoristas', MotoristaController.list);
+routes.get('/motoristas/perfil/:id', MotoristaController.perfil);
 
 
 /**
