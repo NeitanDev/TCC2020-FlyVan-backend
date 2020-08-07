@@ -47,7 +47,7 @@ routes.get('/vans', VanController.list);
  */
 
 routes.post('/viagens', ViagemController.create);
-routes.get('/viagens', ViagemController.list);
+routes.get('/viagens/:motorista_id', ViagemController.list);
 
 
 /**

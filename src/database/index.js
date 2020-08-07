@@ -16,6 +16,7 @@ Passageiros.init(connection);
 Empresas.init(connection);
 Vans.init(connection);
 Viagens.init(connection);
+Viagens.associate(connection.models);
 Motoristas.init(connection);
 Motoristas.associate(connection.models);
 Paradas.init(connection);

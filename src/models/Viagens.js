@@ -11,6 +11,9 @@ class Viagens extends Model {
             sequelize: connection,
         })
     }
+    static associate(models) {
+        this.belongsTo(models.Vans, { foreignKey: 'motorista_id', as: 'viaja' })
+    }
 };
 
 module.exports = Viagens;
