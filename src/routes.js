@@ -31,6 +31,7 @@ routes.get('/passageiro/perfil/:id', PassageiroController.perfil);
 routes.post('/empresa', EmpresaController.create);
 routes.post('/empresa/pesquisar', EmpresaController.searchCnpj);
 routes.get('/empresas/pesquisar/name', EmpresaController.searchName);
+routes.get('/empresa/:empresa_id', EmpresaController.voltaEmpresa);
 
 
 /**

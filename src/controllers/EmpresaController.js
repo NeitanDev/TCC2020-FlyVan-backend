@@ -49,5 +49,13 @@ module.exports = {
             { type: connection.QueryTypes.SELECT });
 
         return res.json(empresa);
+    },
+
+    async voltaEmpresa(req, res) {
+        const { empresa_id } = req.params;
+
+        const empresa = await Empresa.findByPk(empresa_id);
+        
+        return res.json(empresa);
     }
 }
