@@ -48,7 +48,10 @@ routes.get('/vans', VanController.list);
 
 routes.post('/viagens', ViagemController.create);
 routes.get('/viagens/:motorista_id', ViagemController.list);
-
+routes.delete('/viagens/:id', ViagemController.delete);
+routes.get('/viagens/:id/passageiros', ViagemController.passageirosViagem);
+routes.post('/viagens/:id/add/passageiro', ViagemController.addPassageiro);
+routes.delete('/viagens/:id/remove/passageiro',ViagemController.removePassageiro);
 
 /**
  * Motorista Routes:
