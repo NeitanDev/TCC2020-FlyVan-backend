@@ -39,7 +39,9 @@ routes.get('/empresa/:empresa_id', EmpresaController.voltaEmpresa);
  */
 
 routes.post('/vans', multer(uploadConfigVans).single('image'), VanController.create);
-routes.get('/vans', VanController.list);
+routes.post('/vans/list', VanController.list);
+routes.delete('/vans/:id/delete', VanController.removeVan);
+routes.put('/van/:id/update',VanController.update);
 
 
 /**
