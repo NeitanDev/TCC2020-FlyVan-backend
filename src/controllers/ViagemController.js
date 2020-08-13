@@ -96,5 +96,32 @@ module.exports = {
             { type: connection.QueryTypes.DELETE });
 
         return res.json(response);
+    },
+
+    async listViagens(req, res) {
+        const { id } = req.params;
+
+
+        const response = await connection.query(
+            `SELECT viagens.id, viagens.cidade,viagens.partida,` +
+            `viagens.destino,viagens.horario ` +
+            `FROM viagens, list_paradas ` +
+            `WHERE list_paradas.passageiro_id = ${id} AND viagens.id = list_paradas.viagem_id;`,
+            { type: connection.QueryTypes.SELECT });
+
+        return res.json(response);
+    },
+
+    async listPassageirosViagem(req, res) {
+        const { id } = req.params;
+
+        const response = await connection.query(`SELECT list_paradas.id, passageiros.nome, passageiros.image, ` +
+            ` paradas.cidade, paradas.bairro, paradas.logradouro, paradas.numero ` +
+            ` FROM list_paradas,passageiros, paradas ` +
+            ` WHERE viagem_id = ${id} ` +
+            ` AND passageiros.id = list_paradas.passageiro_id AND paradas.id=passageiros.id ORDER BY id desc`,
+            { type: connection.QueryTypes.SELECT });
+
+        return res.json(response);
     }
 };

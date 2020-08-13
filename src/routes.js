@@ -12,6 +12,7 @@ const ViagemController = require('./controllers/ViagemController');
 const MotoristaController = require('./controllers/MotoristaController');
 const LoginController = require('./controllers/LoginController');
 const TesteController = require('./controllers/TesteController');
+const PesquisarController = require('./controllers/PesquisarController');
 
 const routes = express.Router();
 
@@ -23,6 +24,13 @@ routes.post('/passageiro', multer(uploadConfigPassageiro).single('image'), Passa
 routes.get('/passageiro', PassageiroController.list);
 routes.get('/passageiro/perfil/:id', PassageiroController.perfil);
 
+/**
+ * Pesquisar Routes:
+ */
+routes.post('/pesquisar/destino', PesquisarController.searchDestino);
+routes.post('/pesquisar/partida', PesquisarController.searchPartida);
+routes.post('/pesquisar/nome', PesquisarController.searchPartida);
+routes.post('/pesquisar/motorista', PesquisarController.searchMotorista);
 
 /**
  * Empresas Routes:
@@ -54,6 +62,8 @@ routes.delete('/viagens/:id', ViagemController.delete);
 routes.get('/viagens/:id/passageiros', ViagemController.passageirosViagem);
 routes.post('/viagens/:id/add/passageiro', ViagemController.addPassageiro);
 routes.delete('/viagens/:id/remove/passageiro',ViagemController.removePassageiro);
+routes.get('/viagens/passageiros/:id/listPassageiros', ViagemController.listPassageirosViagem); //app do passageiro
+routes.get('/viagens/:id/passageiro/listViagem',ViagemController.listViagens);
 
 /**
  * Motorista Routes:

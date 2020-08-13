@@ -1,7 +1,6 @@
 const Vans = require('../models/Vans');
 const Van_descricao = require('../models/Van_descricaos');
 const connection = require('../database/index');
-const { update } = require('../models/Vans');
 
 module.exports = {
     async create(req, res) {
