@@ -29,8 +29,10 @@ routes.get('/passageiro/perfil/:id', PassageiroController.perfil);
  */
 routes.post('/pesquisar/destino', PesquisarController.searchDestino);
 routes.post('/pesquisar/partida', PesquisarController.searchPartida);
-routes.post('/pesquisar/nome', PesquisarController.searchPartida);
+routes.post('/pesquisar/entinerario', PesquisarController.searchEntinerario);
+routes.post('/pesquisar/nome', PesquisarController.searchNome);
 routes.post('/pesquisar/motorista', PesquisarController.searchMotorista);
+routes.post('/pesquisar/cidade', PesquisarController.searchCidade);
 
 /**
  * Empresas Routes:
@@ -49,7 +51,7 @@ routes.get('/empresa/:empresa_id', EmpresaController.voltaEmpresa);
 routes.post('/vans', multer(uploadConfigVans).single('image'), VanController.create);
 routes.post('/vans/list', VanController.list);
 routes.delete('/vans/:id/delete', VanController.removeVan);
-routes.put('/van/:id/update',VanController.update);
+routes.put('/van/:id/update', VanController.update);
 
 
 /**
@@ -61,9 +63,9 @@ routes.get('/viagens/:motorista_id', ViagemController.list);
 routes.delete('/viagens/:id', ViagemController.delete);
 routes.get('/viagens/:id/passageiros', ViagemController.passageirosViagem);
 routes.post('/viagens/:id/add/passageiro', ViagemController.addPassageiro);
-routes.delete('/viagens/:id/remove/passageiro',ViagemController.removePassageiro);
+routes.delete('/viagens/:id/remove/passageiro', ViagemController.removePassageiro);
 routes.get('/viagens/passageiros/:id/listPassageiros', ViagemController.listPassageirosViagem); //app do passageiro
-routes.get('/viagens/:id/passageiro/listViagem',ViagemController.listViagens);
+routes.get('/viagens/:id/passageiro/listViagem', ViagemController.listViagens);
 
 /**
  * Motorista Routes:
