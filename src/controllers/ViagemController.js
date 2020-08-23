@@ -4,12 +4,13 @@ const connection = require('../database/index');
 
 module.exports = {
     async create(req, res) {
-        const { cidade, partida, destino, horario, motorista_id } = req.body;
+        const { cidade, partida, destino, horario, entineirario, motorista_id } = req.body;
         const viagem = await Viagens.create({
             motorista_id,
             cidade,
             partida,
             destino,
+            entineirario,
             horario
         });
         return res.json(viagem);
@@ -104,7 +105,7 @@ module.exports = {
 
         const response = await connection.query(
             `SELECT viagens.id, viagens.cidade,viagens.partida,` +
-            `viagens.destino,viagens.horario ` +
+            `viagens.destino,viagens.horario, viagens.entineirario ` +
             `FROM viagens, list_paradas ` +
             `WHERE list_paradas.passageiro_id = ${id} AND viagens.id = list_paradas.viagem_id;`,
             { type: connection.QueryTypes.SELECT });

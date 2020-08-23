@@ -6,6 +6,7 @@ class Viagens extends Model {
             cidade: DataTypes.STRING,
             partida: DataTypes.STRING,
             destino: DataTypes.STRING,
+            entineirario: DataTypes.STRING,
             horario: DataTypes.TIME,
         }, {
             sequelize: connection,
