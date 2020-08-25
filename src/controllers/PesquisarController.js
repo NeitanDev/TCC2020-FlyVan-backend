@@ -30,10 +30,11 @@ module.exports = {
         return res.json(response);
     },
 
-    async searchPartida(req, res) {
-        const { search } = req.body;
+    async searchPartidaDestino(req, res) {
+        const { partida, destino } = req.body;
 
-        const arei = search.split(" ");
+        const arei = partida.split(" ");
+        const arrai = destino.split(" ");
 
         let require = `SELECT * ` +
             `FROM viagens WHERE partida LIKE `;
@@ -44,6 +45,17 @@ module.exports = {
             let cont = 1;
             while (cont < arei.length) {
                 require = require + `AND partida LIKE '%${arei[cont]}%' `;
+                cont++;
+            }
+        }
+
+        if (arrai.length == 1) {
+            require = require + ` AND destino LIKE '%${arrai[0]}%'`;
+        } else if (arrai.length > 1) {
+            require = require + ` AND destino LIKE '%${arrai[0]}%' `;
+            let cont = 1;
+            while (cont < arrai.length) {
+                require = require + `AND destino LIKE '%${arrai[cont]}%' `;
                 cont++;
             }
         }
@@ -107,7 +119,7 @@ module.exports = {
 
         const arei = search.split(" ");
 
-        let require = `SELECT id, cidade , partida, destino, horario, motorista_id ` +
+        let require = `SELECT id, cidade , partida, destino, horario, entineirario, motorista_id ` +
             `FROM viagens AS Viagens WHERE cidade LIKE `;
         if (arei.length == 1) {
             require = require + `'%${arei[0]}%'`;
@@ -127,10 +139,9 @@ module.exports = {
     },
 
     async searchEntinerario(req, res) {
-        const { partida,destino } = req.body;
+        const { search } = req.body;
 
-        const arei = partida.split(" ");
-        const arrai = destino.split(" ");
+        const arei = search.split(" ");
 
         let require = `SELECT * ` +
             `FROM viagens WHERE partida LIKE `;
@@ -140,18 +151,7 @@ module.exports = {
             require = require + `'%${arei[0]}%' `;
             let cont = 1;
             while (cont < arei.length) {
-                require = require + `AND partida LIKE '%${arei[cont]}%' `;
-                cont++;
-            }
-        }
-
-        if (arrai.length == 1) {
-            require = require + ` AND destino LIKE '%${arrai[0]}%'`;
-        } else if (arrai.length > 1) {
-            require = require + ` AND destino LIKE '%${arrai[0]}%' `;
-            let cont = 1;
-            while (cont < arrai.length) {
-                require = require + `AND destino LIKE '%${arrai[cont]}%' `;
+                require = require + `AND entineirario LIKE '%${arei[cont]}%' `;
                 cont++;
             }
         }

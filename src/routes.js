@@ -28,7 +28,7 @@ routes.get('/passageiro/perfil/:id', PassageiroController.perfil);
  * Pesquisar Routes:
  */
 routes.post('/pesquisar/destino', PesquisarController.searchDestino);
-routes.post('/pesquisar/partida', PesquisarController.searchPartida);
+routes.post('/pesquisar/partida', PesquisarController.searchPartidaDestino);
 routes.post('/pesquisar/entinerario', PesquisarController.searchEntinerario);
 routes.post('/pesquisar/nome', PesquisarController.searchNome);
 routes.post('/pesquisar/motorista', PesquisarController.searchMotorista);
