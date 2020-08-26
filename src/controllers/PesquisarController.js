@@ -119,7 +119,7 @@ module.exports = {
 
         const arei = search.split(" ");
 
-        let require = `SELECT id, cidade , partida, destino, horario, entineirario, motorista_id ` +
+        let require = `SELECT id, cidade , partida, destino, horario, itinerario, motorista_id ` +
             `FROM viagens AS Viagens WHERE cidade LIKE `;
         if (arei.length == 1) {
             require = require + `'%${arei[0]}%'`;
@@ -138,7 +138,7 @@ module.exports = {
         return res.json(response);
     },
 
-    async searchEntinerario(req, res) {
+    async searchItinerario(req, res) {
         const { search } = req.body;
 
         const arei = search.split(" ");
@@ -151,11 +151,61 @@ module.exports = {
             require = require + `'%${arei[0]}%' `;
             let cont = 1;
             while (cont < arei.length) {
-                require = require + `AND entineirario LIKE '%${arei[cont]}%' `;
+                require = require + `AND itinerario LIKE '%${arei[cont]}%' `;
                 cont++;
             }
         }
 
+        const response = await connection.query(`${require}`,
+            { type: connection.QueryTypes.SELECT });
+
+        return res.json(response);
+    },
+
+    async searchTeste(req,res){
+        const { partida,destino,cidade,itinerario } = req.body;
+
+        var arei = partida.split(" ");
+        const arei2 = destino.split(" ");
+        const arei3 = cidade.split(" ");
+        const arei4 = itinerario.split(" ");
+
+        let require = `SELECT * ` +
+            `FROM viagens WHERE id>0 `;
+
+        if (partida == '');
+        else if (partida != '') {
+            let cont = 0;
+            while (cont < arei.length) {
+                require = require + `AND partida LIKE '%${arei[cont]}%' `;
+                cont++;
+            }
+        }
+
+        if (destino == '');
+        else if (destino != '') {
+            let cont = 0;
+            while (cont < arei2.length) {
+                require = require + `AND destino LIKE '%${arei2[cont]}%' `;
+                cont++;
+            }
+        }
+        if (cidade == '');
+        else if (cidade != '') {
+            let cont = 0;
+            while (cont < arei3.length) {
+                require = require + `AND cidade LIKE '%${arei3[cont]}%' `;
+                cont++;
+            }
+        }  
+        if (itinerario == '');
+        else if (itinerario != '') {
+            let cont = 0;
+            while (cont < arei4.length) {
+                require = require + `AND itinerario LIKE '%${arei4[cont]}%' `;
+                cont++;
+            }
+        }        
         const response = await connection.query(`${require}`,
             { type: connection.QueryTypes.SELECT });
 

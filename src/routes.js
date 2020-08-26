@@ -29,10 +29,11 @@ routes.get('/passageiro/perfil/:id', PassageiroController.perfil);
  */
 routes.post('/pesquisar/destino', PesquisarController.searchDestino);
 routes.post('/pesquisar/partida', PesquisarController.searchPartidaDestino);
-routes.post('/pesquisar/entinerario', PesquisarController.searchEntinerario);
+routes.post('/pesquisar/entinerario', PesquisarController.searchItinerario);
 routes.post('/pesquisar/nome', PesquisarController.searchNome);
 routes.post('/pesquisar/motorista', PesquisarController.searchMotorista);
 routes.post('/pesquisar/cidade', PesquisarController.searchCidade);
+routes.post('/pesquisar/teste', PesquisarController.searchTeste);
 
 /**
  * Empresas Routes:
