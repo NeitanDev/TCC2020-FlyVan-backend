@@ -3,7 +3,7 @@ const Viagens = require('../models/Viagens');
 const connection = require('../database/index');
 const Vans = require('../models/Vans');
 const Van_descricao = require('../models/Van_descricaos');
-const { Op } = require("sequelize");
+const { Op, QueryInterface } = require("sequelize");
 
 module.exports = {
     async searchDestino(req, res) {
@@ -181,7 +181,6 @@ module.exports = {
                 cont++;
             }
         }
-
         if (destino == '');
         else if (destino != '') {
             let cont = 0;
@@ -205,7 +204,8 @@ module.exports = {
                 require = require + `AND itinerario LIKE '%${arei4[cont]}%' `;
                 cont++;
             }
-        }        
+        }     
+
         const response = await connection.query(`${require}`,
             { type: connection.QueryTypes.SELECT });
 
