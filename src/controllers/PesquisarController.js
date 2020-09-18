@@ -6,73 +6,31 @@ const Van_descricao = require('../models/Van_descricaos');
 const { Op, QueryInterface } = require("sequelize");
 
 module.exports = {
-    async searchDestino(req, res) {
-        const { search } = req.body;
-
-        const arei = search.split(" ");
-
-        let require = `SELECT id, cidade , partida, destino, horario, motorista_id ` +
-            `FROM viagens AS Viagens WHERE destino LIKE `;
-        if (arei.length == 1) {
-            require = require + `'%${arei[0]}%'`;
-        } else if (arei.length > 1) {
-            require = require + `'%${arei[0]}%' `;
-            let cont = 1;
-            while (cont < arei.length) {
-                require = require + `AND destino LIKE '%${arei[cont]}%' `;
-                cont++;
-            }
-        }
-
-        const response = await connection.query(`${require}`,
-            { type: connection.QueryTypes.SELECT });
-
-        return res.json(response);
-    },
-
-    async searchPartidaDestino(req, res) {
-        const { partida, destino } = req.body;
-
-        const arei = partida.split(" ");
-        const arrai = destino.split(" ");
-
-        let require = `SELECT * ` +
-            `FROM viagens WHERE partida LIKE `;
-        if (arei.length == 1) {
-            require = require + `'%${arei[0]}%'`;
-        } else if (arei.length > 1) {
-            require = require + `'%${arei[0]}%' `;
-            let cont = 1;
-            while (cont < arei.length) {
-                require = require + `AND partida LIKE '%${arei[cont]}%' `;
-                cont++;
-            }
-        }
-
-        if (arrai.length == 1) {
-            require = require + ` AND destino LIKE '%${arrai[0]}%'`;
-        } else if (arrai.length > 1) {
-            require = require + ` AND destino LIKE '%${arrai[0]}%' `;
-            let cont = 1;
-            while (cont < arrai.length) {
-                require = require + `AND destino LIKE '%${arrai[cont]}%' `;
-                cont++;
-            }
-        }
-
-        const response = await connection.query(`${require}`,
-            { type: connection.QueryTypes.SELECT });
-
-        return res.json(response);
-    },
 
     async searchNome(req, res) {
         const { search } = req.body;
 
         const arei = search.split(" ");
 
-        let require = `SELECT * ` +
-            `FROM van_descricaos, vans WHERE vans.id = van_id AND title LIKE `;
+        let require =
+        `
+            SELECT vans.id, van_descricaos.title, van_descricaos.image, 
+            van_descricaos.descricao, vans.marca, vans.modelo, vans.ano,
+            motoristas.nome, motoristas.cidade, vans.proprietario, 
+            vans.id_proprietario, motoristas.image AS motoimage,
+            motoristas.email, motoristas.whatsapp,
+            (SELECT AVG(avaliacoes.avaliacao) FROM avaliacoes WHERE vans.id_proprietario=avaliacoes.motorista_id) AS media
+            
+            FROM vans, van_descricaos, motoristas, avaliacoes
+            
+            WHERE vans.id = van_descricaos.van_id
+            AND vans.proprietario = 0
+            AND vans.id_proprietario = motoristas.id
+            AND vans.id_proprietario=avaliacoes.motorista_id
+            AND van_descricaos.title LIKE
+        `;
+
+
         if (arei.length == 1) {
             require = require + `'%${arei[0]}%'`;
         } else if (arei.length > 1) {
@@ -84,26 +42,29 @@ module.exports = {
             }
         }
 
-        const response = await connection.query(`${require}`,
-            { type: connection.QueryTypes.SELECT });
+        let require2 = `
+            SELECT vans.id, van_descricaos.title, van_descricaos.image,
+            van_descricaos.descricao, vans.marca, vans.modelo, vans.ano,
+            empresas.nome,empresas.cidade, empresas.email,empresas.whatsapp, 
+            vans.proprietario, vans.id_proprietario,
+            (SELECT AVG(avaliacoes.avaliacao) FROM avaliacoes WHERE vans.id_proprietario=avaliacoes.motorista_id) AS media
 
-        return res.json(response);
-    },
+            FROM vans, van_descricaos, empresas, avaliacoes
 
-    async searchMotorista(req, res) {
-        const { search } = req.body;
+            WHERE vans.id = van_descricaos.van_id
+            AND vans.proprietario = 1
+            AND vans.id_proprietario = empresas.id
+            AND vans.id_proprietario=avaliacoes.motorista_id
+            AND van_descricaos.title LIKE
+        `;
 
-        const arei = search.split(" ");
-
-        let require = `SELECT * ` +
-            `FROM van_descricaos WHERE title LIKE `;
         if (arei.length == 1) {
-            require = require + `'%${arei[0]}%'`;
+            require2 = require2 + `'%${arei[0]}%'`;
         } else if (arei.length > 1) {
-            require = require + `'%${arei[0]}%' `;
+            require2 = require2 + `'%${arei[0]}%' `;
             let cont = 1;
             while (cont < arei.length) {
-                require = require + `AND title LIKE '%${arei[cont]}%' `;
+                require2 = require2 + `AND title LIKE '%${arei[cont]}%' `;
                 cont++;
             }
         }
@@ -111,59 +72,30 @@ module.exports = {
         const response = await connection.query(`${require}`,
             { type: connection.QueryTypes.SELECT });
 
-        return res.json(response);
-    },
-
-    async searchCidade(req, res) {
-        const { search } = req.body;
-
-        const arei = search.split(" ");
-
-        let require = `SELECT id, cidade , partida, destino, horario, itinerario, motorista_id ` +
-            `FROM viagens AS Viagens WHERE cidade LIKE `;
-        if (arei.length == 1) {
-            require = require + `'%${arei[0]}%'`;
-        } else if (arei.length > 1) {
-            require = require + `'%${arei[0]}%' `;
-            let cont = 1;
-            while (cont < arei.length) {
-                require = require + `AND cidade LIKE '%${arei[cont]}%' `;
-                cont++;
-            }
-        }
-
-        const response = await connection.query(`${require}`,
+        const response2 = await connection.query(`${require2}`,
             { type: connection.QueryTypes.SELECT });
 
-        return res.json(response);
-    },
+        const result = response.concat(response2);
 
-    async searchItinerario(req, res) {
-        const { search } = req.body;
+        const values = result.filter(function (a) {
+            return !this[JSON.stringify(a)] && (this[JSON.stringify(a)] = true);
+        }, Object.create(null));
 
-        const arei = search.split(" ");
-
-        let require = `SELECT * ` +
-            `FROM viagens WHERE partida LIKE `;
-        if (arei.length == 1) {
-            require = require + `'%${arei[0]}%'`;
-        } else if (arei.length > 1) {
-            require = require + `'%${arei[0]}%' `;
-            let cont = 1;
-            while (cont < arei.length) {
-                require = require + `AND itinerario LIKE '%${arei[cont]}%' `;
-                cont++;
-            }
+        var cont2 = 0;
+        while (cont2 < values.length) {
+            // console.log(values[cont2].media);
+            var seila = parseFloat(values[cont2].media);
+            values[cont2].media = seila.toFixed(1);
+            cont2++;
         }
 
-        const response = await connection.query(`${require}`,
-            { type: connection.QueryTypes.SELECT });
 
-        return res.json(response);
+        return res.json(values);
     },
 
-    async searchTeste(req,res){
-        const { partida,destino,cidade,itinerario } = req.body;
+
+    async searchTeste(req, res) {
+        const { partida, destino, cidade, itinerario } = req.body;
 
         var arei = partida.split(" ");
         const arei2 = destino.split(" ");
@@ -196,7 +128,7 @@ module.exports = {
                 require = require + `AND cidade LIKE '%${arei3[cont]}%' `;
                 cont++;
             }
-        }  
+        }
         if (itinerario == '');
         else if (itinerario != '') {
             let cont = 0;
@@ -204,7 +136,7 @@ module.exports = {
                 require = require + `AND itinerario LIKE '%${arei4[cont]}%' `;
                 cont++;
             }
-        }     
+        }
 
         const response = await connection.query(`${require}`,
             { type: connection.QueryTypes.SELECT });

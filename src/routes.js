@@ -13,6 +13,7 @@ const MotoristaController = require('./controllers/MotoristaController');
 const LoginController = require('./controllers/LoginController');
 const TesteController = require('./controllers/TesteController');
 const PesquisarController = require('./controllers/PesquisarController');
+const ResultsController = require('./controllers/ResultsController');
 
 const routes = express.Router();
 
@@ -27,13 +28,14 @@ routes.get('/passageiro/perfil/:id', PassageiroController.perfil);
 /**
  * Pesquisar Routes:
  */
-routes.post('/pesquisar/destino', PesquisarController.searchDestino);
-routes.post('/pesquisar/partida', PesquisarController.searchPartidaDestino);
-routes.post('/pesquisar/entinerario', PesquisarController.searchItinerario);
+// routes.post('/pesquisar/destino', PesquisarController.searchDestino);
+// routes.post('/pesquisar/partida', PesquisarController.searchPartidaDestino);
+// routes.post('/pesquisar/entinerario', PesquisarController.searchItinerario);
 routes.post('/pesquisar/nome', PesquisarController.searchNome);
-routes.post('/pesquisar/motorista', PesquisarController.searchMotorista);
-routes.post('/pesquisar/cidade', PesquisarController.searchCidade);
+// routes.post('/pesquisar/motorista', PesquisarController.searchMotorista);
+// routes.post('/pesquisar/cidade', PesquisarController.searchCidade); 
 routes.post('/pesquisar/teste', PesquisarController.searchTeste);
+routes.post('/pesquisas/result', ResultsController.resultAutonomo);
 
 /**
  * Empresas Routes:

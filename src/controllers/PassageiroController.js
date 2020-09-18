@@ -44,15 +44,15 @@ module.exports = {
             });
 
         return res.json({ passageiro, parada });
-    }, 
+    },
 
-    async perfil(req,res){
+    async perfil(req, res) {
         const { id } = req.params;
-        
-        const response = await connection.query(`SELECT * FROM passageiros, paradas `+
-        `WHERE paradas.passageiro_id = passageiros.id AND passageiros.id = `+id,
-        { type: connection.QueryTypes.SELECT });
+
+        const response = await connection.query(`SELECT * FROM passageiros, paradas ` +
+            `WHERE paradas.passageiro_id = passageiros.id AND passageiros.id = ` + id,
+            { type: connection.QueryTypes.SELECT });
 
         return res.json(response[0]);
-    }   
+    }
 }
