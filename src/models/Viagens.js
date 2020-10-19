@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes, DATE } = require('sequelize');
 
 class Viagens extends Model {
     static init(connection) {
@@ -8,6 +8,7 @@ class Viagens extends Model {
             destino: DataTypes.STRING,
             itinerario: DataTypes.STRING,
             horario: DataTypes.TIME,
+            casa_passageiro: DataTypes.INTEGER
         }, {
             sequelize: connection,
         })

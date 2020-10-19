@@ -23,7 +23,7 @@ module.exports = {
                 senha,
                 cnh,
                 whatsapp,
-                // image: `uploads/motoristas/${req.file.filename}`,
+                image: `uploads/motoristas/${req.file.filename}`,
                 cep,
                 lougradouro,
                 bairro,

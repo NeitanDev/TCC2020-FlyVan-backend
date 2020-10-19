@@ -4,14 +4,15 @@ const connection = require('../database/index');
 
 module.exports = {
     async create(req, res) {
-        const { cidade, partida, destino, horario, itinerario, motorista_id } = req.body;
+        const { cidade, partida, destino, horario, itinerario, motorista_id,casa_passageiro } = req.body;
         const viagem = await Viagens.create({
             motorista_id,
             cidade,
             partida,
             destino,
             itinerario,
-            horario
+            horario,
+            casa_passageiro
         });
         return res.json(viagem);
     },

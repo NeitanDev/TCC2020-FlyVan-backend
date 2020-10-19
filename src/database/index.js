@@ -20,7 +20,7 @@ Viagens.associate(connection.models);
 Motoristas.init(connection);
 Motoristas.associate(connection.models);
 Paradas.init(connection);
-Paradas.associate(connection.models);
+// Paradas.associate(connection.models);
 Van_descricao.init(connection);
 Van_descricao.associate(connection.models);
 

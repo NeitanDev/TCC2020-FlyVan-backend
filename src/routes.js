@@ -14,6 +14,7 @@ const LoginController = require('./controllers/LoginController');
 const TesteController = require('./controllers/TesteController');
 const PesquisarController = require('./controllers/PesquisarController');
 const ResultsController = require('./controllers/ResultsController');
+const Viagens2Controller = require('./controllers/Viagens2Controller');
 
 const routes = express.Router();
 
@@ -60,7 +61,14 @@ routes.put('/van/:id/update', VanController.update);
 /**
  * Viangesn Routes:
  */
+//Viagens2
+routes.post('/viagens2/create/pontos_de_embarque',Viagens2Controller.createEmbarque);
+routes.post('/viagens2/create/casa_passageiro',Viagens2Controller.createCreateCasa_passageiro);
+routes.post('/viagens2/list/appMotorista', Viagens2Controller.listViagensAppMotorista);
+routes.post('/viagens2/list/appPassageiro',Viagens2Controller.listViagensAppPassageiro);
+routes.post('/cancela/viagem',Viagens2Controller.cancelaViagem);
 
+// end Viagens2
 routes.post('/viagens', ViagemController.create);
 routes.get('/viagens/:motorista_id', ViagemController.list);
 routes.delete('/viagens/:id', ViagemController.delete);
