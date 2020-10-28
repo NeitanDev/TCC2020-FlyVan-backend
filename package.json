@@ -5,9 +5,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/sever.js",
-    "criatabela": "sequelize db:migrate"
+    "criatabela": "sequelize db:migrate",
+    "start":"node src/sever.js"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "multer": "^1.4.2",
     "mysql2": "^2.1.0",
