@@ -67,6 +67,7 @@ routes.post('/viagens2/create/casa_passageiro',Viagens2Controller.createCreateCa
 routes.post('/viagens2/list/appMotorista', Viagens2Controller.listViagensAppMotorista);
 routes.post('/viagens2/list/appPassageiro',Viagens2Controller.listViagensAppPassageiro);
 routes.post('/cancela/viagem',Viagens2Controller.cancelaViagem);
+routes.post('/busca/quem/nao/vai',Viagens2Controller.listpessoasNaoIrao)
 
 // end Viagens2
 routes.post('/viagens', ViagemController.create);

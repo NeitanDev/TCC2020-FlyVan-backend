@@ -325,5 +325,27 @@ module.exports = {
             { type: connection.QueryTypes.INSERT });
 
         return res.json(response);
+    },
+
+    async listpessoasNaoIrao(req,res){
+        const {id_viagem} = req.body
+
+        let require = `
+        SELECT cancelarviagem.id_passageiro 
+        FROM cancelarviagem 
+        WHERE cancelarviagem.id_viagem = ${id_viagem} 
+        AND cancelarviagem.dia =  DATE(NOW())
+        `;
+
+        const response = await connection.query(`${require}`,
+            { type: connection.QueryTypes.SELECT });
+
+            let newArrey = [];
+
+            for (var i = 0; i < response.length; i++){
+                newArrey[i] = response[i].id_passageiro;
+            }
+
+        return res.json(newArrey);
     }
 }
