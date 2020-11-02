@@ -142,6 +142,19 @@ module.exports = {
             { type: connection.QueryTypes.SELECT });
 
         return res.json(response);
+    },
+
+    async viagemDeteils(req,res){
+        const { id_viagem } = req.body;
+
+        let require = `
+        SELECT paradas.id,paradas.descricao,paradas.latitude,paradas.longitude FROM paradas, list_paradas 
+        WHERE list_paradas.viagem_id = ${id_viagem} 
+        AND list_paradas.parada_id = paradas.id
+        `
+        const response = await connection.query(`${require}`,
+            { type: connection.QueryTypes.SELECT });
+
     }
 
 };

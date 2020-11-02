@@ -162,7 +162,6 @@ module.exports = {
             arrei.push(data);
         }
 
-
         for (var i = 0; i < response.length; i++) {
             let points = await connection.query(`
                 SELECT paradas.id,paradas.descricao,paradas.latitude,paradas.longitude FROM paradas, list_paradas 
@@ -304,10 +303,6 @@ module.exports = {
             arrai2.push(data);
 
         }
-
-
-
-        // arraiFinal = arrai2.concat();
 
         return res.json(arrai2);
     },
