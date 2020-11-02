@@ -155,6 +155,8 @@ module.exports = {
         const response = await connection.query(`${require}`,
             { type: connection.QueryTypes.SELECT });
 
+        return res.json(response);
+
     }
 
 };
