@@ -21,7 +21,7 @@ module.exports = {
             Passageiro.create({
                 nome,
                 sobrenome,
-                // image: `uploads/passageiros/${req.file.filename}`,
+                image: `uploads/passageiros/${req.file.filename}`,
                 cod,
                 email,
                 senha,
@@ -40,6 +40,7 @@ module.exports = {
                 cidade,
                 uf,
                 numero,
+                descricao: 'passageiro',
                 passageiro_id: id,
             });
 
