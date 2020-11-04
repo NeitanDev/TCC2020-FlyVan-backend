@@ -45,7 +45,9 @@ module.exports = {
                 passageiro_id: id,
             });
 
-        return res.json({ passageiro, parada });
+        return res.json({ 
+            passageiro, parada
+        });
     },
 
     async perfil(req, res) {

@@ -23,7 +23,7 @@ const routes = express.Router();
  */
 
 // routes.post('/passageiro', multer(uploadConfigPassageiro).single('image'), PassageiroController.create);
-routes.post('/passageiro', PassageiroController.create);
+routes.post('/passageiro/create', PassageiroController.create);
 routes.get('/passageiro', PassageiroController.list);
 routes.get('/passageiro/perfil/:id', PassageiroController.perfil);
 
