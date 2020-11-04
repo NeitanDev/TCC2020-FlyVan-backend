@@ -5,10 +5,10 @@ const connection = require('../database/index');
 // const { perfil } = require('./PassageiroController');
 
 module.exports = {
-    async create(req, res) {
-        const { empresa_id } = req.params;
+    async creates(req, res) {
+        // const { empresa_id } = req.params;
         const { nome, sobrenome, email, senha, cnh, whatsapp, cep,
-            lougradouro, bairro, cidade, uf, numero, pertence } = req.body;
+            lougradouro, bairro, cidade, uf, numero, pertence,empresa_id } = req.body;
         const cod = createId();
 
             const motorista = await Motoristas.create({
