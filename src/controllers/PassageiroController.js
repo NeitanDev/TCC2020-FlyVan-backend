@@ -22,7 +22,7 @@ module.exports = {
                 nome,
                 sobrenome,
                 // image: `uploads/passageiros/${req.file.filename}`,
-                image: 'uploads/passageiros/2020_10_3__153347.jpg',
+                image: 'uploads/passageiros/profile.jpg',
                 cod,
                 email,
                 senha,

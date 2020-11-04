@@ -80,7 +80,8 @@ routes.get('/viagens/:id/passageiro/listViagem', ViagemController.listViagens);
  * Motorista Routes:
  */
 
-routes.post('/motoristas/:empresa_id', multer(uploadConfigMotorista).single('image'), MotoristaController.create);
+// routes.post('/motoristas/:empresa_id', multer(uploadConfigMotorista).single('image'), MotoristaController.create);
+routes.post('/motoristas/:empresa_id', MotoristaController.create);
 routes.get('/motoristas', MotoristaController.list);
 routes.get('/motoristas/perfil/:id', MotoristaController.perfil);
 
