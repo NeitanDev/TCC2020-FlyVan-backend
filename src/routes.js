@@ -22,7 +22,8 @@ const routes = express.Router();
  * Passageiros Routes:
  */
 
-routes.post('/passageiro', multer(uploadConfigPassageiro).single('image'), PassageiroController.create);
+// routes.post('/passageiro', multer(uploadConfigPassageiro).single('image'), PassageiroController.create);
+routes.post('/passageiro', PassageiroController.create);
 routes.get('/passageiro', PassageiroController.list);
 routes.get('/passageiro/perfil/:id', PassageiroController.perfil);
 
