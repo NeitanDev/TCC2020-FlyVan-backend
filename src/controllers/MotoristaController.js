@@ -11,9 +11,6 @@ module.exports = {
             lougradouro, bairro, cidade, uf, numero, pertence } = req.body;
         const cod = createId();
 
-        const empresa = await Empresas.findByPk(empresa_id);
-
-        if (empresa != null) {
             const motorista = await Motoristas.create({
                 empresa_id,
                 nome,
@@ -35,9 +32,7 @@ module.exports = {
 
 
             return res.json(motorista);
-        } else if (empresa == null) {
-            return res.status(400).json({ Mensage: "Erro!, empresa não existente" })
-        }
+        
     },
 
     async list(req, res) {
