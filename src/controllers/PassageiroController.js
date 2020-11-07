@@ -45,7 +45,7 @@ module.exports = {
                 passageiro_id: id,
             });
 
-        return res.json({ 
+        return res.json({
             passageiro, parada
         });
     },
@@ -58,5 +58,23 @@ module.exports = {
             { type: connection.QueryTypes.SELECT });
 
         return res.json(response[0]);
+    },
+
+    async solicitacao(req, res) {
+        const { viagem_id, motorista_id, passageiro_id, dia, nome, viagem_partida, viagem_destino } = req.body;
+        const response = await connection.query(`
+        select nome,image,whatsapp,paradas.cidade as cidadePassageiro from passageiros,paradas where passageiros.id = ${passageiro_id} and paradas.passageiro_id = ${passageiro_id}
+        `,
+            { type: connection.QueryTypes.SELECT });
+
+        const solicitacao = await connection.query(`
+        INSERT INTO solicitacoes (viagem_id,motorista_id,passageiro_id,image,dia,nome,status,viagem_partida,viagem_destino,whatsapp, cidadePassageiro) 
+        VALUES (${viagem_id}, ${motorista_id}, ${passageiro_id},'${response[0].image}',NOW(),'${response[0].nome}','solicitado','${viagem_partida}',
+        '${viagem_destino}','${response[0].whatsapp}','${response[0].cidadePassageiro}');
+        `,
+            { type: connection.QueryTypes.INSERT });
+
+        return res.json(solicitacao);
     }
+    
 }

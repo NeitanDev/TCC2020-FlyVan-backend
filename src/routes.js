@@ -26,6 +26,7 @@ const routes = express.Router();
 routes.post('/passageiro/create', PassageiroController.create);
 routes.get('/passageiro', PassageiroController.list);
 routes.get('/passageiro/perfil/:id', PassageiroController.perfil);
+routes.post('/passageiro/solicitacao',PassageiroController.solicitacao);
 
 /**
  * Pesquisar Routes:
@@ -84,6 +85,11 @@ routes.get('/viagens/:id/passageiro/listViagem', ViagemController.listViagens);
 routes.post('/motoristas/create', MotoristaController.creates);
 routes.get('/motoristas', MotoristaController.list);
 routes.get('/motoristas/perfil/:id', MotoristaController.perfil);
+routes.post('/motoristas/avaliar',MotoristaController.avaliar);
+routes.post('/motoristas/list/solicitacoes', MotoristaController.solicitacao);
+routes.post('/motoristas/mudaStatus', MotoristaController.mudaStatus);
+routes.post('/motoristas/solicitacaoDeteils',MotoristaController.solicitacaoDeteils);
+routes.post('/motorista/incluirPassageiro',MotoristaController.incluirPassageiro);
 
 
 /**

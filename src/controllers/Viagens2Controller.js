@@ -268,6 +268,7 @@ module.exports = {
 
             let data = {
                 id: response[i].id,
+                motorista_id: response[i].motorista_id,
                 casa_passageiro: response[i].casa_passageiro,
                 cidade: response[i].cidade,
                 partida: response[i].partida,
@@ -290,6 +291,7 @@ module.exports = {
 
             let data = {
                 id: arrai[i].id,
+                motorista_id: response[i].motorista_id,
                 casa_passageiro: arrai[i].casa_passageiro,
                 cidade: arrai[i].cidade,
                 partida: arrai[i].partida,
