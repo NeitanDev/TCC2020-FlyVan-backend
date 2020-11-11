@@ -80,7 +80,7 @@ module.exports = {
             cidadePassageiro:response[0].cidadePassageiro,
         }
 
-        return res.json(response);
+        return res.json(sounou);
     }
     
 }
