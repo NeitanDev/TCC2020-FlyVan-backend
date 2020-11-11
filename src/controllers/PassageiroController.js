@@ -74,13 +74,13 @@ module.exports = {
         `,
             { type: connection.QueryTypes.INSERT });
 
-        let sounou = {
-            viagem_id, motorista_id, passageiro_id, dia, nome, viagem_partida, viagem_destino,
-            image:response[0].image,nome:response[0].nome,whatsapp:response[0].whatsapp,
-            cidadePassageiro:response[0].cidadePassageiro,
-        }
+        // let sounou = {
+        //     viagem_id, motorista_id, passageiro_id, dia, nome, viagem_partida, viagem_destino,
+        //     image:response[0].image,nome:response[0].nome,whatsapp:response[0].whatsapp,
+        //     cidadePassageiro:response[0].cidadePassageiro,
+        // }
 
-        return res.json(sounou);
+        return res.json(response);
     }
     
 }
