@@ -75,9 +75,9 @@ module.exports = {
             { type: connection.QueryTypes.INSERT });
 
         let sounou = {
-            viagem_id, motorista_id, passageiro_id, dia, nome, viagem_partida, viagem_destino,
+            id:solicitacao[0],viagem_id, motorista_id, passageiro_id, dia, nome, viagem_partida, viagem_destino,
             image:response[0].image,nome:response[0].nome,whatsapp:response[0].whatsapp,
-            cidadePassageiro:response[0].cidadePassageiro,
+            cidadePassageiro:response[0].cidadePassageiro,status:'solicitado'
         }
 
         return res.json(sounou);
