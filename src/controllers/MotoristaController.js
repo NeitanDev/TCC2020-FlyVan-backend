@@ -31,9 +31,12 @@ module.exports = {
             pertence
         });
 
+        await connection.query(`
+        INSERT INTO avaliacoes (avaliacao,motorista_id,passageiro_id) 
+        VALUES (3, ${motorista.id}, 1);
+        `,{ type: connection.QueryTypes.INSERT });
 
         return res.json(motorista);
-
     },
 
     async list(req, res) {
