@@ -34,7 +34,7 @@ module.exports = {
         await connection.query(`
         INSERT INTO avaliacoes (avaliacao,motorista_id,passageiro_id) 
         VALUES (3, ${motorista.id}, 1);
-        `,{ type: connection.QueryTypes.INSERT });
+        `, { type: connection.QueryTypes.INSERT });
 
         return res.json(motorista);
     },
@@ -87,17 +87,17 @@ module.exports = {
     },
 
     async mudaStatus(req, res) {
-        const {id_solicitacao, status} = req.body;
+        const { id_solicitacao, status } = req.body;
         const solicitacao = await connection.query(`
         UPDATE solicitacoes SET status = '${status}' WHERE id = ${id_solicitacao}
         `,
             { type: connection.QueryTypes.UPDATE });
 
-        return res.json({Sounou:"teste"})
+        return res.json({ Sounou: "teste" })
     },
 
     async solicitacaoDeteils(req, res) {
-        const {viagem_id} = req.body;
+        const { viagem_id } = req.body;
         const solicitacao = await connection.query(`
         SELECT * FROM viagens WHERE id = ${viagem_id}
         `,
@@ -106,16 +106,16 @@ module.exports = {
         return res.json(solicitacao[0]);
     },
 
-    async incluirPassageiro(req,res){
-        const {viagem_id,passageiro_id} = req.body;
+    async incluirPassageiro(req, res) {
+        const { viagem_id, passageiro_id } = req.body;
         const solicitacao = await connection.query(`
         INSERT INTO list_passageiros (viagem_id,passageiro_id,created_at,updated_at) 
         VALUES (${viagem_id}, ${passageiro_id},NOW(),NOW());
         `,
             { type: connection.QueryTypes.INSERT });
 
-            await connection.query(`
-        UPDATE solicitacoes (status) 
+        await connection.query(`
+        UPDATE solicitacoes 
         SET status = 'aceito' WHERE viagem_id= ${viagem_id} AND  passageiro_id=${passageiro_id};
         `,
             { type: connection.QueryTypes.UPDATE });
