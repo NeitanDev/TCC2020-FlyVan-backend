@@ -79,7 +79,7 @@ module.exports = {
         const { motorista_id } = req.body;
 
         const solicitacao = await connection.query(`
-        SELECT * FROM solicitacoes WHERE solicitacoes.motorista_id = ${motorista_id}
+        SELECT * FROM solicitacoes WHERE solicitacoes.motorista_id = ${motorista_id} AND solicitacoes.status = 'aceito'
         `,
             { type: connection.QueryTypes.SELECT });
 
