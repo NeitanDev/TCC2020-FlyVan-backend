@@ -62,7 +62,14 @@ module.exports = {
 
     async solicitacao(req, res) {
         const { viagem_id, motorista_id, passageiro_id, dia, nome, viagem_partida, viagem_destino } = req.body;
-        const response = await connection.query(`
+
+        const response1 = await connection.query(`
+        SELECT * FROM solicitacoes WHERE viagem_id = ${viagem_id} AND motorista_id = ${motorista_id} AND passageiro_id = ${passageiro_id}
+        `,
+            { type: connection.QueryTypes.SELECT });
+
+        if(response1 == []){
+            const response = await connection.query(`
         select nome,image,whatsapp,paradas.cidade as cidadePassageiro from passageiros,paradas where passageiros.id = ${passageiro_id} and paradas.passageiro_id = ${passageiro_id}
         `,
             { type: connection.QueryTypes.SELECT });
@@ -81,6 +88,11 @@ module.exports = {
         }
 
         return res.json(sounou);
+        } else if (response1 != []){
+            return res.json({id:false});
+        }
+// return res.json(response1)
+
     }
     
 }

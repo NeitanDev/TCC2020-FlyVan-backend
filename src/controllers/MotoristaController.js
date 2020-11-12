@@ -109,8 +109,8 @@ module.exports = {
     async incluirPassageiro(req,res){
         const {viagem_id,passageiro_id} = req.body;
         const solicitacao = await connection.query(`
-        INSERT INTO list_passageiros (viagem_id,passageiro_id) 
-        VALUES (${viagem_id}, ${passageiro_id});
+        INSERT INTO list_passageiros (viagem_id,passageiro_id,created_at,updated_at) 
+        VALUES (${viagem_id}, ${passageiro_id},NOW(),NOW());
         `,
             { type: connection.QueryTypes.INSERT });
 
