@@ -68,7 +68,7 @@ module.exports = {
         `,
             { type: connection.QueryTypes.SELECT });
 
-        if(response1 == []){
+        if(response1[0] == null){
             const response = await connection.query(`
         select nome,image,whatsapp,paradas.cidade as cidadePassageiro from passageiros,paradas where passageiros.id = ${passageiro_id} and paradas.passageiro_id = ${passageiro_id}
         `,
@@ -88,10 +88,10 @@ module.exports = {
         }
 
         return res.json(sounou);
-        } else if (response1 != []){
+        } else if (response1[0] != null){
             return res.json({id:false});
         }
-// return res.json(response1)
+// return res.json({sounou:true})
 
     }
     
