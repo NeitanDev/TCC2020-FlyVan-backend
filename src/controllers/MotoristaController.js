@@ -114,6 +114,12 @@ module.exports = {
         `,
             { type: connection.QueryTypes.INSERT });
 
+            await connection.query(`
+        UPDATE solicitacoes (status) 
+        SET status = 'aceito' WHERE viagem_id= ${viagem_id} AND  passageiro_id=${passageiro_id};
+        `,
+            { type: connection.QueryTypes.UPDATE });
+
         return res.json(solicitacao);
     }
 };
