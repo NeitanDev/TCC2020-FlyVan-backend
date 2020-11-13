@@ -27,6 +27,7 @@ routes.post('/passageiro/create', PassageiroController.create);
 routes.get('/passageiro', PassageiroController.list);
 routes.get('/passageiro/perfil/:id', PassageiroController.perfil);
 routes.post('/passageiro/solicitacao',PassageiroController.solicitacao);
+routes.post('/passageiro/entrarViagem',PassageiroController.entrarViagem);
 
 /**
  * Pesquisar Routes:
@@ -90,6 +91,7 @@ routes.post('/motoristas/list/solicitacoes', MotoristaController.solicitacao);
 routes.post('/motoristas/mudaStatus', MotoristaController.mudaStatus);
 routes.post('/motoristas/solicitacaoDeteils',MotoristaController.solicitacaoDeteils);
 routes.post('/motorista/incluirPassageiro',MotoristaController.incluirPassageiro);
+routes.post('/motorista/addPassageiroForCod',MotoristaController.addPassageiroForCod);
 
 
 /**

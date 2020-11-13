@@ -3,6 +3,7 @@ const Empresas = require('../models/Empresas');
 const createId = require('../utils/createId');
 const connection = require('../database/index');
 const { solicitacao } = require('./PassageiroController');
+const { addPassageiro } = require('./ViagemController');
 // const { perfil } = require('./PassageiroController');
 
 module.exports = {
@@ -121,5 +122,46 @@ module.exports = {
             { type: connection.QueryTypes.UPDATE });
 
         return res.json(solicitacao);
+    },
+
+    async addPassageiroForCod(req,res){
+
+        const { viagem_id,casa_passageiro,cod } = req.body;
+
+        const passageiro_id = await connection.query(`
+        SELECT * FROM passageiros WHERE cod = '${cod}'
+    `,
+        { type: connection.QueryTypes.SELECT });
+
+        if (casa_passageiro == 0) {
+
+            await connection.query(`
+            INSERT INTO list_passageiros (viagem_id, passageiro_id, created_at, updated_at) 
+            VALUES (${viagem_id}, ${passageiro_id[0].id}, NOW(), NOW());
+        `,
+                { type: connection.QueryTypes.INSERT });
+
+        } else if (casa_passageiro == 1) {
+
+            const paradaid = await connection.query(`
+            SELECT * FROM paradas WHERE passageiro_id= ${passageiro_id[0].id}
+        `,
+            { type: connection.QueryTypes.SELECT });
+
+            await connection.query(`
+            INSERT INTO list_paradas (viagem_id, parada_id, created_at, updated_at) 
+            VALUES (${viagem_id}, ${passageiro_id[0].id}, NOW(), NOW());
+        `,
+                { type: connection.QueryTypes.INSERT });
+
+                await connection.query(`
+            INSERT INTO list_passageiros (viagem_id, passageiro_id, created_at, updated_at) 
+            VALUES (${viagem_id}, ${passageiro_id[0].id}, NOW(), NOW());
+        `,
+                { type: connection.QueryTypes.INSERT });
+        }
+
+
+        return res.json(passageiro_id[0])
     }
 };
