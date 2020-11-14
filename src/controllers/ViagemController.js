@@ -35,11 +35,17 @@ module.exports = {
     async delete(req, res) {
         const { id } = req.params;
 
-        await Viagens.destroy({
-            where: {
-                id,
-            }
-        });
+        await connection.query(`
+        DELETE FROM list_paradas WHERE list_paradas.viagem_id = ${id};
+        `,{ type: connection.QueryTypes.INSERT });
+
+        await connection.query(`
+        DELETE FROM list_passageiros WHERE list_passageiros.viagem_id = ${id};
+        `,{ type: connection.QueryTypes.INSERT });
+
+        await connection.query(`
+        DELETE FROM viagens WHERE id = ${id};
+        `,{ type: connection.QueryTypes.INSERT });
 
         return res.json({ sucesso: 'true' });
     },
