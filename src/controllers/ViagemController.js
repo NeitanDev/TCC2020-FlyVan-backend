@@ -47,6 +47,10 @@ module.exports = {
         DELETE FROM viagens WHERE id = ${id};
         `,{ type: connection.QueryTypes.INSERT });
 
+        await connection.query(`
+        DELETE FROM solicitacoes WHERE solicitacoes.viagem_id = ${id};
+        `,{ type: connection.QueryTypes.INSERT });
+
         return res.json({ sucesso: 'true' });
     },
 
