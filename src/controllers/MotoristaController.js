@@ -128,8 +128,13 @@ module.exports = {
 
         const { viagem_id,casa_passageiro,cod } = req.body;
 
-        const passageiro_id = await connection.query(`
+        const sounou = await connection.query(`
         SELECT * FROM passageiros WHERE cod = '${cod}'
+    `,
+        { type: connection.QueryTypes.SELECT });
+
+        const passageiro_id = await connection.query(`
+        SELECT * FROM paradas WHERE passageiro_id = '${sounou[0].id}'
     `,
         { type: connection.QueryTypes.SELECT });
 
