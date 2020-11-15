@@ -27,7 +27,7 @@ module.exports = {
             AND vans.proprietario = 0
             AND vans.id_proprietario = motoristas.id
             AND vans.id_proprietario=avaliacoes.motorista_id
-            AND van_descricaos.title LIKE
+            AND van_descricaos.title LIKE 
         `;
 
 
@@ -55,7 +55,7 @@ module.exports = {
             AND vans.proprietario = 1
             AND vans.id_proprietario = empresas.id
             AND vans.id_proprietario=avaliacoes.motorista_id
-            AND van_descricaos.title LIKE
+            AND van_descricaos.title LIKE 
         `;
 
         if (arei.length == 1) {
@@ -69,10 +69,10 @@ module.exports = {
             }
         }
 
-        const response = await connection.query(`${require}`,
+        const response = await connection.query(`${require} ORDER BY media`,
             { type: connection.QueryTypes.SELECT });
 
-        const response2 = await connection.query(`${require2}`,
+        const response2 = await connection.query(`${require2} ORDER BY media`,
             { type: connection.QueryTypes.SELECT });
 
         const result = response.concat(response2);
