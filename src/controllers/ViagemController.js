@@ -104,10 +104,10 @@ module.exports = {
     async removePassageiro(req, res) {
         const { id } = req.params;
 
-        const response = await connection.query(`DELETE FROM list_paradas WHERE list_paradas.id=${id}`,
-            { type: connection.QueryTypes.DELETE });
+        // const response = await connection.query(`DELETE FROM list_paradas WHERE list_paradas.id=${id}`,
+        //     { type: connection.QueryTypes.DELETE });
 
-        return res.json(response);
+        return res.json({id});
     },
 
     async listViagens(req, res) {
