@@ -124,19 +124,19 @@ module.exports = {
         return res.json(solicitacao);
     },
 
-    async addPassageiroForCod(req,res){
+    async addPassageiroForCod(req, res) {
 
-        const { viagem_id,casa_passageiro,cod } = req.body;
+        const { viagem_id, casa_passageiro, cod } = req.body;
 
         const sounou = await connection.query(`
         SELECT * FROM passageiros WHERE cod = '${cod}'
     `,
-        { type: connection.QueryTypes.SELECT });
+            { type: connection.QueryTypes.SELECT });
 
         const passageiro_id = await connection.query(`
         SELECT * FROM paradas WHERE passageiro_id = '${sounou[0].id}'
     `,
-        { type: connection.QueryTypes.SELECT });
+            { type: connection.QueryTypes.SELECT });
 
         if (casa_passageiro == 0) {
 
@@ -151,7 +151,7 @@ module.exports = {
             const paradaid = await connection.query(`
             SELECT * FROM paradas WHERE passageiro_id= ${passageiro_id[0].id}
         `,
-            { type: connection.QueryTypes.SELECT });
+                { type: connection.QueryTypes.SELECT });
 
             await connection.query(`
             INSERT INTO list_paradas (viagem_id, parada_id, created_at, updated_at) 
@@ -159,13 +159,12 @@ module.exports = {
         `,
                 { type: connection.QueryTypes.INSERT });
 
-                await connection.query(`
+            await connection.query(`
             INSERT INTO list_passageiros (viagem_id, passageiro_id, created_at, updated_at) 
             VALUES (${viagem_id}, ${passageiro_id[0].id}, NOW(), NOW());
         `,
                 { type: connection.QueryTypes.INSERT });
         }
-
 
         return res.json(passageiro_id[0])
     }
