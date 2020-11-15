@@ -14,7 +14,7 @@ module.exports = {
     },
 
     async create(req, res) {
-        const { nome, sobrenome, email, senha, whatsapp, cep, lougradouro, bairro, cidade, uf, numero, latitude, longitude } = req.body;
+        const { nome, sobrenome, email, senha, whatsapp, cep, logradouro, bairro, cidade, uf, numero, latitude, longitude } = req.body;
         const cod = createId();
 
         const passageiro = await
@@ -36,7 +36,7 @@ module.exports = {
                 latitude,
                 longitude,
                 cep,
-                lougradouro,
+                logradouro,
                 bairro,
                 cidade,
                 uf,
