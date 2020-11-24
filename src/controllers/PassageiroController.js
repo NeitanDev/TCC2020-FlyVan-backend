@@ -216,7 +216,7 @@ module.exports = {
             `,{ type: connection.QueryTypes.DELETE });
 
             await connection.query(`
-            DELETE FROM list_paradas FROM list_paradas WHERE list_paradas.parada_id = ${response[0].id} AND list_paradas.viagem_id = ${viagem_id}
+            DELETE FROM list_paradas WHERE list_paradas.parada_id = ${response[0].id} AND list_paradas.viagem_id = ${viagem_id}
             `,{ type: connection.QueryTypes.DELETE });
             return res.json(response[0].id);
 
