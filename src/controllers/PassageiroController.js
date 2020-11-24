@@ -194,6 +194,34 @@ module.exports = {
         }
 
         return res.json(arrai2[0]);
+    },
+
+    async deleteViagem(req,res){
+        const {viagem_id,passageiro_id,casa_passageiro} = req.body;
+
+        if(casa_passageiro==0){
+
+            await connection.query(`
+            DELETE FROM list_passageiros WHERE list_passageiros.viagem_id=${viagem_id} AND list_passageiros.passageiro_id=${passageiro_id};
+            `,{ type: connection.QueryTypes.DELETE });
+        
+        }else if(casa_passageiro==1){
+
+            const response = await connection.query(`
+            SELECT id FROM paradas WHERE paradas.passageiro_id = ${passageiro_id}
+            `,{ type: connection.QueryTypes.SELECT });
+
+            await connection.query(`
+            DELETE FROM list_passageiros WHERE list_passageiros.viagem_id=${viagem_id} AND list_passageiros.passageiro_id=${passageiro_id};
+            `,{ type: connection.QueryTypes.DELETE });
+
+            await connection.query(`
+            DELETE FROM list_paradas FROM list_paradas WHERE list_paradas.parada_id = ${response[0].id} AND list_paradas.viagem_id = ${viagem_id}
+            `,{ type: connection.QueryTypes.DELETE });
+            return res.json(response[0].id);
+
+        }
+
     }
 
 }

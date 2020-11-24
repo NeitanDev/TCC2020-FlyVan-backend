@@ -28,6 +28,7 @@ routes.get('/passageiro', PassageiroController.list);
 routes.get('/passageiro/perfil/:id', PassageiroController.perfil);
 routes.post('/passageiro/solicitacao',PassageiroController.solicitacao);
 routes.post('/passageiro/entrarViagem',PassageiroController.entrarViagem);
+routes.post('/passageiro/deleteViagem',PassageiroController.deleteViagem);
 
 /**
  * Pesquisar Routes:
