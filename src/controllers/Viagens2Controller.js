@@ -113,12 +113,12 @@ module.exports = {
         let arrei2 = [];
         let arraiFinal = [];
 
-        let require = `SELECT * FROM viagens WHERE viagens.motorista_id = ${id} AND viagens.casa_passageiro = 0`;
+        let require = `SELECT * FROM viagens WHERE viagens.motorista_id = ${id} AND viagens.casa_passageiro = 0 ORDER BY id DESC`;
 
         const response = await connection.query(`${require}`,
             { type: connection.QueryTypes.SELECT });
 
-        let require2 = `SELECT * FROM viagens WHERE viagens.motorista_id = ${id} AND viagens.casa_passageiro = 1;`
+        let require2 = `SELECT * FROM viagens WHERE viagens.motorista_id = ${id} AND viagens.casa_passageiro = 1 ORDER BY id DESC;`
 
         const response2 = await connection.query(`${require2}`,
             { type: connection.QueryTypes.SELECT });
