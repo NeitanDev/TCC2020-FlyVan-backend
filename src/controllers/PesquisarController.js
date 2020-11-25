@@ -101,6 +101,7 @@ module.exports = {
         const arei2 = destino.split(" ");
         const arei3 = cidade.split(" ");
         const arei4 = itinerario.split(" ");
+        let arrai = [];
 
         let require = `SELECT * ` +
             `FROM viagens WHERE id>0 `;
@@ -141,7 +142,29 @@ module.exports = {
         const response = await connection.query(`${require}`,
             { type: connection.QueryTypes.SELECT });
 
-        return res.json(response);
+            for (var i = 0; i < response.length; i++) {
+                let points = await connection.query(`
+                    SELECT paradas.id,paradas.descricao,paradas.latitude,paradas.longitude FROM paradas, list_paradas 
+                    WHERE list_paradas.viagem_id = ${response[i].id} 
+                    AND list_paradas.parada_id = paradas.id;
+                `,
+                    { type: connection.QueryTypes.SELECT });
+    
+                let data = {
+                    id: response[i].id,
+                    motorista_id: response[i].motorista_id,
+                    casa_passageiro: response[i].casa_passageiro,
+                    cidade: response[i].cidade,
+                    partida: response[i].partida,
+                    destino: response[i].destino,
+                    itinerario: response[i].itinerario,
+                    horario: response[i].horario,
+                    points
+                }
+                arrai.push(data);
+            }
+
+        return res.json(arrai);
     },
 
     async viagemDeteils(req,res){
