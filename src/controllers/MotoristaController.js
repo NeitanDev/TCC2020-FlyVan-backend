@@ -161,7 +161,7 @@ module.exports = {
 
             await connection.query(`
             INSERT INTO list_passageiros (viagem_id, passageiro_id, created_at, updated_at) 
-            VALUES (${viagem_id}, ${passageiro_id[0].id}, NOW(), NOW());
+            VALUES (${viagem_id}, ${sounou[0].id}, NOW(), NOW());
         `,
                 { type: connection.QueryTypes.INSERT });
         }
