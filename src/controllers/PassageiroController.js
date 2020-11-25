@@ -210,6 +210,7 @@ module.exports = {
             const response = await connection.query(`
             SELECT id FROM paradas WHERE paradas.passageiro_id = ${passageiro_id}
             `,{ type: connection.QueryTypes.SELECT });
+            
 
             await connection.query(`
             DELETE FROM list_passageiros WHERE list_passageiros.viagem_id=${viagem_id} AND list_passageiros.passageiro_id=${passageiro_id};
